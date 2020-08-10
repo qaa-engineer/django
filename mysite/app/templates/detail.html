@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=4a96165f0781" >
-    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=6b143f8b0e4c" >
-</head>
-<body>
-    <div class="container">
+{% extends 'base.html' %}
+{% block description_and_title %}
+<meta name="description" content="">
+<title>{{ question_detail.title }}</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=4a96165f0781">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=6b143f8b0e4c">
+{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
     {% if question_detail %}
-        <div class="">
-            <h1>{{ question_detail.title }}</h1>
+    <div class="media text-muted pt-3">
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <h1 class="mb-1">{{ question_detail.title }}</a></h1>
             {% autoescape off %}
             {{ question_detail.post }}
             {% endautoescape %}
         </div>
-    {% else %}
-        <p>No app are available.</p>
-    {% endif %}
     </div>
-</body>
-</html>
+</div>
+{% else %}
+<p>No app are available.</p>
+{% endif %}
+</div>
+{% endblock %}
+{% block script %}
+<script>
+document.getElementByClass("grid--cell").style = display:none;
+</script>
+{% endblock %}
