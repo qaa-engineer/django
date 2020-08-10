@@ -1,24 +1,32 @@
 from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
 from .models import Content
+from django.shortcuts import render
+from django.views import generic
 
 
-def index(request):
-    latest_question_list = Content.objects.order_by('id')[:5]
-    template = loader.get_template('app/index.html')
-    context = {
-        'latest_question_list': latest_question_list,
-    }
-    return HttpResponse(template.render(context, request))
+class IndexView(generic.ListView):
+    template_name = 'index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        return Content.objects.order_by('id')[:10]
 
 
 def detail(request, question_id):
-    question_detail = Content.objects.get(pk=question_id)
-    template = loader.get_template('app/detail.html')
+    try:
+        question_detail = Content.objects.get(pk=question_id)
+    except Content.DoesNotExist:
+        raise Http404("Question does not exist")
+    title = question_detail.title
+    post = question_detail.post
     context = {
         'question_detail': question_detail,
+        'title': title,
+        'post': post,
     }
-    return HttpResponse(template.render(context, request))
+    # FixME
+    return render(request, 'detail.html', content_type='text/html', context=context)
 
 
 def results(request, question_id):

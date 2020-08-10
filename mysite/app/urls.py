@@ -2,13 +2,14 @@ from django.urls import path
 
 from . import views
 
+app_name = 'app'
 urlpatterns = [
-    # ex: /app/
-    path('', views.index, name='index'),
-    # ex: /app/5/
+    # ex: /
+    path('', views.IndexView.as_view(), name='index'),
+    # ex: /5/
     path('<int:question_id>/', views.detail, name='detail'),
-    # ex: /app/5/results/
+    # ex: /5/results/
     path('<int:question_id>/results/', views.results, name='results'),
-    # ex: /app/5/question/
+    # ex: /5/question/
     path('<int:question_id>/question/', views.get_question, name='get_question'),
 ]
