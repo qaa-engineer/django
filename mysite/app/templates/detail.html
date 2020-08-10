@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=4a96165f0781" >
+    <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=6b143f8b0e4c" >
 </head>
 <body>
-{% if question_detail %}
-    <h1>{{ question_detail.title }}</h1>
-    {% autoescape off %}
-    <div class="">{{ question_detail.post }}</div>
-    {% endautoescape %}
-{% else %}
-    <p>No app are available.</p>
-{% endif %}
+    <div class="container">
+    {% if question_detail %}
+        <div class="">
+            <h1>{{ question_detail.title }}</h1>
+            {% autoescape off %}
+            {{ question_detail.post }}
+            {% endautoescape %}
+        </div>
+    {% else %}
+        <p>No app are available.</p>
+    {% endif %}
+    </div>
 </body>
 </html>
