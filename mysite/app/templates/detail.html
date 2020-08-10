@@ -6,8 +6,10 @@
 </head>
 <body>
 {% if question_detail %}
-    <h1>{{ title }}</h1>
-    <div class="">{{ post }}</div>
+    <h1>{{ question_detail.title }}</h1>
+    {% autoescape off %}
+    <div class="">{{ question_detail.post }}</div>
+    {% endautoescape %}
 {% else %}
     <p>No app are available.</p>
 {% endif %}

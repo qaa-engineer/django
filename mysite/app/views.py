@@ -22,10 +22,8 @@ def detail(request, question_id):
     post = question_detail.post
     context = {
         'question_detail': question_detail,
-        'title': title,
-        'post': post,
     }
-    # FixME
+    # FixME return html please
     return render(request, 'detail.html', content_type='text/html', context=context)
 
 
