@@ -8,8 +8,9 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     # ex: /5/
     path('<int:question_id>/', views.detail, name='detail'),
-    # ex: /5/results/
-    path('<int:question_id>/results/', views.results, name='results'),
-    # ex: /5/question/
-    path('<int:question_id>/question/', views.get_question, name='get_question'),
+    # /all/
+    path('all/', views.AllView.as_view()),
+    # ex: /results/<>
+    path('search/', views.SearchView.as_view(), name='search_results'),
+
 ]

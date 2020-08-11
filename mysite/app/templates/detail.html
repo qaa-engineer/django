@@ -26,9 +26,12 @@
 <script>
 function hide (elements) {
   elements = elements.length ? elements : [elements];
-  for (var index = 0; index < elements.length; index++) {
-    elements[index].style.display = 'none';
+  try {
+      for (var index = 0; index < elements.length; index++) {
+        elements[index].style.display = 'none';
+      }
   }
+  catch {}
 }
 hide(document.getElementsByClassName('mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4'));
 hide(document.getElementsByClassName('grid s-btn-group js-filter-btn'));
@@ -39,6 +42,7 @@ hide(document.getElementsByClassName('js-bookmark-btn s-btn s-btn__unset c-point
 hide(document.getElementsByClassName('post-taglist grid gs4 gsy fd-column'));
 hide(document.getElementsByClassName('grid--cell fl1'));
 hide(document.getElementsByClassName('js-voting-container grid fd-column ai-stretch gs4 fc-black-200'));
+hide(document.getElementsByClassName('s-notice s-notice__info js-post-notice mb16'));
 
 hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.mb0"));
 hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.post-taglist.grid.gs4.gsy.fd-column"));

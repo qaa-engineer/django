@@ -5,7 +5,6 @@
     {% endblock %}
 {% block content %}
 <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Последние записи</h6>
     {% if latest_question_list %}
     {% for question in latest_question_list %}
     <div class="media text-muted pt-3">
@@ -17,9 +16,6 @@
     {% else %}
     <p>No app are available.</p>
     {% endif %}
-    <small class="d-block text-right mt-3">
-        <a href="/all">Все записи</a>
-    </small>
 </div>
 {% endblock %}
 

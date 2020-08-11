@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponse
 from django.http import Http404
 from .models import Content
@@ -18,19 +19,27 @@ def detail(request, question_id):
         question_detail = Content.objects.get(pk=question_id)
     except Content.DoesNotExist:
         raise Http404("Question does not exist")
-    title = question_detail.title
-    post = question_detail.post
     context = {
         'question_detail': question_detail,
     }
-    # FixME return html please
     return render(request, 'detail.html', content_type='text/html', context=context)
 
 
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+class AllView(generic.ListView):
+    template_name = 'all.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        return Content.objects.order_by('id').all()
 
 
-def get_question(request, question_id):
-    return HttpResponse("You're voting on question %s." % question_id)
+class SearchView(generic.ListView):
+    model = Content
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Content.objects.filter(
+            Q(title__icontains=query)
+        )
+        return object_list
