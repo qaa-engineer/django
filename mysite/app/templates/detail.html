@@ -2,8 +2,8 @@
 {% block description_and_title %}
 <meta name="description" content="">
 <title>{{ question_detail.title }}</title>
-<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=4a96165f0781">
-<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=6b143f8b0e4c">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css">
 {% endblock %}
 {% block content %}
 <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -37,10 +37,13 @@ hide(document.getElementsByClassName('comment-user'));
 hide(document.getElementsByClassName('js-post-issue grid--cell s-btn s-btn__unset c-pointer py6 mx-auto'));
 hide(document.getElementsByClassName('js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track'));
 hide(document.getElementsByClassName('post-taglist grid gs4 gsy fd-column'));
+hide(document.getElementsByClassName('grid--cell fl1'));
+hide(document.getElementsByClassName('js-voting-container grid fd-column ai-stretch gs4 fc-black-200'));
 
 hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.mb0"));
 hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.post-taglist.grid.gs4.gsy.fd-column"));
-hide(document.querySelectorAll("a.js-add-link.comments-link.disabled-link"));
+try {hide(document.querySelectorAll("a.js-add-link.comments-link.disabled-link"));} catch {hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));};
+try {hide(document.querySelectorAll("div > div.answercell.post-layout--right > div.grid.mb0.fw-wrap.ai-start.jc-end.gs8.gsy"));} catch {hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));};
 
 </script>
 {% endblock %}
