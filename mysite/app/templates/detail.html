@@ -24,6 +24,23 @@
 {% endblock %}
 {% block script %}
 <script>
-document.getElementByClass("grid--cell").style = display:none;
+function hide (elements) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'none';
+  }
+}
+hide(document.getElementsByClassName('mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4'));
+hide(document.getElementsByClassName('grid s-btn-group js-filter-btn'));
+hide(document.getElementsByClassName('js-show-link comments-link'));
+hide(document.getElementsByClassName('comment-user'));
+hide(document.getElementsByClassName('js-post-issue grid--cell s-btn s-btn__unset c-pointer py6 mx-auto'));
+hide(document.getElementsByClassName('js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track'));
+hide(document.getElementsByClassName('post-taglist grid gs4 gsy fd-column'));
+
+hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.mb0"));
+hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.post-taglist.grid.gs4.gsy.fd-column"));
+hide(document.querySelectorAll("a.js-add-link.comments-link.disabled-link"));
+
 </script>
 {% endblock %}
