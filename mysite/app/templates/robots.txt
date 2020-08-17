@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Crawl-delay: 2
+Host: bestto.site
+Sitemap: http:/bestto.site/sitemap.xml
