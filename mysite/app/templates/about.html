@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block description_and_title %}
+<meta name="description" content="">
+<title>{{ question_detail.title }}</title>
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="media text-muted pt-3">
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <h2>О нас</h2>
+            <p>Цель этого ресурса - предоставить рускоязычной аудитории доступ к контенту StackOverflow на русском
+                языке.</p>
+            <br>
+            <h2>Неточности перевода</h2>
+            <p>Если вы заметили ошибки и неточности в переводе, пожалуйста напишите нам по адресу
+                nadovmeste@mail.ru. И мы обязательно исправим ошибку.</p>
+            <br>
+            <h2>Наши планы</h2>
+            <p>1. Продолжать улучшать качество перевода. Мы пременяем алгоритмы машиного обучения с ручной модерацией
+                текстов и регулярно улучшаем алгоритмы.</p>
+            <p>2. Систематизировать информацию. Изучаем возможные варианты систематизации информации, чтобы сразу же
+                предоставлять готовый ответ пользователю.</p>
+            <br>
+            <h2>О Stack Overflow</h2>
+            <p>Ресурс Stack Overflow - популярная система вопросов и ответов об IT, является частью Stack
+                Exchange Network.</p>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block script %}
+{% endblock %}

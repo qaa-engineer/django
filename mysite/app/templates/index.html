@@ -1,26 +1,91 @@
 {% extends 'base.html' %}
 {% block description_and_title %}
-    <meta name="description" content="Вопросы и ответы на компьютерную тематику">
-    <title>QA</title>
-    {% endblock %}
-{% block content %}
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Последние записи</h6>
-    {% if latest_question_list %}
-    {% for question in latest_question_list %}
-    <div class="media text-muted pt-3">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <h5 class="mb-1"><a href="/{{ question.id }}/">{{ question.title }}</a></h5>
-        </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <p>No app are available.</p>
-    {% endif %}
-    <small class="d-block text-right mt-3">
-        <a href="/all">Все записи</a>
-    </small>
-</div>
+<meta name="description" content="Вопросы и ответы на компьютерную тематику">
+<title>QA</title>
 {% endblock %}
 
+{% block content %}
+<div class="col-md-6 col-sm-12 col-xs-12 py-4">
+    <div class="card shadow-sm">
+        <div class="card-header justify-content-between d-flex">
+            <h4>Популярные вопросы</h4>
+        </div>
 
+        <div class="card-body">
+            <ul>
+
+
+                <li>
+                    <a href="/1/" class="nav-link">Влияет ли включение TRIM на другие жесткие диски компьютера (и как
+                        узнать, что Windows его использует)?</a>
+                </li>
+
+                <li>
+                    <a href="/2/" class="nav-link">Разница между locate и which в Linux</a>
+                </li>
+
+                <li>
+                    <a href="/3/" class="nav-link">Допустимая длина строки XML diff</a>
+                </li>
+
+                <li>
+                    <a href="/4/" class="nav-link">Почему изображение HDMI-&gt; DVI резче, чем VGA?</a>
+                </li>
+
+                <li>
+                    <a href="/5/" class="nav-link">как на самом деле работает команда ping?</a>
+                </li>
+
+                <li>
+                    <a href="/6/" class="nav-link">Могу ли я переключить заголовок User-Agent только для одного
+                        веб-сайта?</a>
+                </li>
+
+                <li>
+                    <a href="/7/" class="nav-link">Ноутбук показывает разрешение, превышающее нормальный максимум, когда
+                        он подключен к экрану</a>
+                </li>
+
+                <li>
+                    <a href="/8/" class="nav-link">Трекпоинт Thinkpad: возможна прокрутка и средний щелчок?</a>
+                </li>
+
+                <li>
+                    <a href="/9/" class="nav-link">Что мешает ctrl-alt-m достичь IntelliJ в Windows 10?</a>
+                </li>
+
+                <li>
+                    <a href="/10/" class="nav-link">Есть ли в OS X инструмент для поиска координат, цвета пикселей и
+                        измерения расстояний на экране?</a>
+                </li>
+
+
+            </ul>
+            <br>
+            <a href="/all">далее</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-sm-12 col-xs-12 py-4">
+    <div class="card shadow-sm">
+        <div class="card-header justify-content-between d-flex">
+            <h4>Обновленые вопросы</h4>
+        </div>
+
+        <div class="card-body">
+            <ul>
+                {% if latest_question_list %}
+                {% for question in latest_question_list %}
+                <li>
+                    <a href="/{{ question.id }}/"
+                       class="nav-link">{{ question.title }}</a>
+                </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+            <br>
+            <a href="/all">далее</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

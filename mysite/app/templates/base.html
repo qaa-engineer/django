@@ -3,64 +3,380 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="yandex-verification" content="c8af57f5d5b76094" />
-    {% block description_and_title %}
-    <meta name="description" content="">
-    <title>IT QA</title>
-    {% endblock %}
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    {% block description_and_title %}
+    <title>Вопросы и ответы об IT</title>
+    <meta name="description" content="Вопросы и ответы об IT">
+    {% endblock %}
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+.container-fluid , .navbar {
+	max-width: 1800px
+}
+
+.logo {
+	width: 40px;
+	height: 40px;
+	font-size: 1.5rem;
+	float: left;
+}
+#content {
+	min-height: 1100px;
+}
+.navbar {
+	min-height: 60px;
+}
+
+a:hover, a:hover.nav-link{
+	text-decoration: underline;
+}
+
+a, a:VISITED, .btn-link {
+	text-decoration: none;
+	color: #1675d1;
+}
+
+a.btn-secondary {
+	color: #fff;
+}
+.btn-outline-light:not(:disabled):not(.disabled).active {
+	background-color: rgba(0, 0, 0, 0.03);
+	border-color: rgba(0, 0, 0, 0.125);
+}
+.btn-outline-light {
+	border-color: rgba(0, 0, 0, 0.125);
+	color: #1675d1;
+}
+.form-control:focus {
+	box-shadow: none;
+}
+
+.form-control-underlined {
+	border-width: 0;
+	border-bottom-width: 5px;
+	border-radius: 0;
+	padding-left: 0;
+}
+.autocomplete, .autocomplete.open{
+	z-index: 1022;
+	color: black;
+}
+ol {
+	padding-left: 1.5rem;
+}
+ol li {
+	padding-left: 0.5rem;
+}
+em {
+	font-weight: 600;
+}
+strong {
+	font-weight: 700;
+}
+html, body {
+	height: 100%;
+}
+
+.post-text ul p:last-of-type, .wmd-preview ul p:last-of-type, .post-text ol p:last-of-type, .wmd-preview ol p:last-of-type {
+margin-bottom: 0;
+}
+h1, .h1 {
+font-size: 2.2rem;
+}
+        .bg-primary{
+            background-color: #303b44 !important;
         }
-      }
+.text-white {
+    color: #fff !important;
+}
+p{
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333333;
+}
+code{
+    overflow: auto;
+    background-color: #f6f8fa;
+    border: 0.5px solid #ddd;
+    border-radius: 3px;
+    max-height: 700px;
+}
+.post-layout--right{
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #333333;
+}
+h1{
+    font-size: 32px;
+    line-height: 1.7;
+    padding-bottom: 30px;
+    color: #333333;
+}
+
+
+
+
 
     </style>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="/">Главная</a>
+<body>
+<nav class="navbar navbar-expand navbar-dark bg-primary text-light shadow-sm sticky-top" style="white-space: nowrap">
+    <div class="container-fluid">
+        <a class="btn p-0 pb-1 d-lg-none" data-toggle="collapse" href="#navbarToggleExternalContent"
+           role="button" aria-expanded="false" aria-controls="navbarToggleExternalContent">
+            <span class="navbar-toggler-icon"></span>
+        </a>
+        <div class="col-lg-2 d-none d-lg-flex left-menu align-items-center">
+            <a class="navbar-brand text-light pl-2" href="/">Главная</a>
+        </div>
+        <form class="navbar-form w-100 pl-3 pr-2" id="search_form" method="get" action="/search/"
+              onsubmit="javascript: return submit_form()">
+            <div class="p-1 pl-2 pr-3 bg-light rounded rounded-pill  ">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button id="button-addon1" type="submit" class="btn btn-link">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <input type="search" placeholder="Что вы ищете?" aria-describedby="button-addon1"
+                           class="form-control border-0 bg-light" data-autocomplete="/search/autocomplete/"
+                           id="search_text" name="q" type="text" autocomplete="off">
 
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="/search" method="get">
-            <input class="form-control mr-sm-2" name="q" type="text" placeholder="Поиск по сайту..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+                </div>
+            </div>
         </form>
+        <div class="col-lg-2 d-none d-xl-block left-menu text-center">
+            <a class="text-light" href="/about.html">О нас</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="text-light" href="/contacts.html">Контакты</a>
+        </div>
+
     </div>
 </nav>
 
+<div class="container-fluid ml-0 shadow">
+    <div class="row align-items-start navbar-expand-lg bg-primary">
+        <div class="col-sm collapse navbar-collapse pt-4 text-light left-menu bg-primary"
+             id="navbarToggleExternalContent">
+            <nav class="sidebar">
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <a class="nav-link text-light navbar-brand" href="/#">Популярное</a>
+                    </div>
+                    <div class="col col-lg-12">
+                        <ul class="d-none d-sm-block d-md-block py-0 my-0">
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=ноутбук">Ноутбук</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=Windows">Windows</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=браузер">Браузер</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=linux">Linux</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=Excel">Excel</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=Microsoft">Microsoft</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=Skype">Skype</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=TeamViewer">TeamViewer</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=VirtualBox">VirtualBox</a>
+                            </li>
+                            <li><a class="nav-link text-light pl-1" href="/search/?q=IP">IP-адрес</a>
+                            </li>
+                        </ul>
+                    </div>
 
-<main role="main" class="container">
-    <div class="d-flex align-items-center p-3 my-3">
-    {% block content %}
-    {% endblock %}
+            </nav>
+        </div>
+
+        <div class="col-12 col-lg-10 position-relative border-left bg-white">
+
+            <div class="row h-100">
+                <div id="content" class="col-12 col-12 h-100 px-4 pb-5 pt-4">
+                    {% block search %}
+                    <div class="row	 justify-content-center">
+                        <h1 class="py-4">Перевод популярных вопросов со StackOverflow</h1>
+                    </div>
+                    <div class="row	 justify-content-center">
+                        <form class="navbar-form w-75 pl-3 pr-2 my-5" id="search_form" method="get" action="/search/"
+                              onsubmit="javascript: return submit_form()">
+                            <div class="p-1 pl-2 pr-3 bg-light rounded rounded-pill border shadow-sm ">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button id="button-addon1" type="submit" class="btn btn-link">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                    <input type="search" placeholder="Что вы ищете?" aria-describedby="button-addon1"
+                                           class="form-control border-0 bg-light"
+                                           data-autocomplete="/search/autocomplete/"
+                                           id="search_text" name="q" autocomplete="off">
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row pt-4 justify-content-center">
+                        {% endblock %}
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    <div class="row	">
+                        <h3 class="pt-4 pl-5">Популярные теги</h3>
+                    </div>
+                    <div class="row	 justify-content-center">
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=javascript">javascript</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        JavaScript (не путать с Java)-это высокоуровневый, динамичный,
+                                        многопарадигмальный, объектно-ориентированный, основанный на прототипах, слабо
+                                        типизированный и интерпретируемый язык, используемый как для клиентских, так и
+                                        для серверных сценариев. Его основное применение заключается в визуализации и
+                                        манипулировании веб-страницами. Используйте этот тег для вопросов, касающихся
+                                        ECMAScript и его...
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=java">java</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        Java (не путать с JavaScript, JScript или JS)-это универсальный, независимый от
+                                        платформы, статически типизированный объектно-ориентированный язык
+                                        программирования, предназначенный для использования совместно с виртуальной
+                                        машиной Java (JVM). &quot;Java platform&quot;-это название вычислительной
+                                        системы, в которой установлены инструменты для разработки и запуска программ
+                                        Java. Используйте этот тег для...
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=CSS">CSS</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        CSS — формальный язык описания внешнего вида документа, написанного с
+                                        использованием языка разметки. Преимущественно используется как средство
+                                        описания, оформления внешнего вида веб-страниц, написанных с помощью языков
+                                        разметки HTML и XHTML, но может также применяться к любым XML-документам,
+                                        например, к SVG или XUL.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=php">php</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        PHP (PHP: гипертекстовый препроцессор)-широко используемый, высокоуровневый,
+                                        динамический, объектно-ориентированный и интерпретируемый скриптовый язык,
+                                        предназначенный в основном для серверной веб-разработки.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=android">android</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        Android-мобильная операционная система Google, используемая для программирования
+                                        или разработки цифровых устройств (смартфоны, планшеты, автомобили, TVs, одежда,
+                                        стекло, IoT). По всем вопросам, касающимся Android, Android использование
+                                        специальных тегов, таких как android-намерение, android-активность,
+                                        android-адаптера и т. д. Для вопросов, не связанных с разработкой или
+                                        программированием, но...
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 py-4 ">
+                            <div class="card shadow-sm">
+                                <div class="card-header justify-content-between d-flex">
+                                    <a class="btn btn-secondary btn-sm font-weight-bold"
+                                       href="/search/?q=python">python</a>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <p class="truncate-smart">
+                                        Python-это многопарадигмальный, динамически типизированный, универсальный язык
+                                        программирования, предназначенный для быстрого (изучения, использования и
+                                        понимания) применения чистого и единообразного синтаксиса. Обычно используются
+                                        две похожие, но несовместимые версии Python, Python 2.7 и 3.x. Для специфичных
+                                        для версии вопросов Python добавьте тег [python-2.7] или [python-3.x]. При
+                                        использовании...
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-</main>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous">
-    </script>
-{% block script %}
-{% endblock %}
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous">
+</script>
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -70,8 +386,13 @@
         trackLinks:true,
         accurateTrackBounce:true
    });
+
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/66419239" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/66419239" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
 <!-- /Yandex.Metrika counter -->
+{% block script %}
+{% endblock %}
 </body>
 </html>

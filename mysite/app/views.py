@@ -25,6 +25,12 @@ def detail(request, question_id):
     return render(request, 'detail.html', content_type='text/html', context=context)
 
 
+def about(request):
+    return render(request, 'about.html')
+
+def contacts(request):
+    return render(request, 'contacts.html')
+
 class AllView(generic.ListView):
     template_name = 'all.html'
     context_object_name = 'latest_question_list'
