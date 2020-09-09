@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="yandex-verification" content="273fd43c31bdade4" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     {% block description_and_title %}
@@ -131,7 +132,7 @@ h1{
         </a>
         <div class="col-lg-2 d-none d-lg-flex left-menu align-items-center">
             <a class="navbar-brand text-light pl-2" href="/">Главная</a>
-        </div>
+	</div>
         <form class="navbar-form w-100 pl-3 pr-2" id="search_form" method="get" action="/search/"
               onsubmit="javascript: return submit_form()">
             <div class="p-1 pl-2 pr-3 bg-light rounded rounded-pill  ">
@@ -225,6 +226,7 @@ h1{
                         {% block content %}
                         {% endblock %}
                     </div>
+					{% block tags %}
                     <div class="row	">
                         <h3 class="pt-4 pl-5">Популярные теги</h3>
                     </div>
@@ -358,7 +360,7 @@ h1{
                             </div>
                         </div>
 
-
+					{% endblock %}
                     </div>
                 </div>
             </div>
@@ -376,21 +378,18 @@ h1{
         crossorigin="anonymous">
 </script>
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
+<script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym(66419239, "init", {
+   ym(66533953, "init", {
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true
    });
-
 </script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/66419239" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/66533953" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 {% block script %}
 {% endblock %}

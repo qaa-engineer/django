@@ -1,7 +1,8 @@
 from django.urls import path
-
+from django.conf.urls import url
 from . import views
 from django.views.generic.base import TemplateView
+from django.views.generic import RedirectView
 
 app_name = 'app'
 urlpatterns = [
@@ -22,4 +23,6 @@ urlpatterns = [
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
     ),
+    # favicon.ico
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico'), name='favicon'),
 ]

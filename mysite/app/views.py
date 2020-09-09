@@ -11,7 +11,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Content.objects.order_by('id')[:10]
+        return Content.objects.order_by('id')[:7]
 
 
 def detail(request, question_id):
