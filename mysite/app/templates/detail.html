@@ -2,6 +2,20 @@
 {% block description_and_title %}
 <meta name="description" content="">
 <title>{{ question_detail.title }}</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/ru/primary.css">
+<style>
+    #mainbar, .mainbar {
+        width: 100%;
+    }
+    .input-group {
+        flex-flow: initial;
+        margin-bottom: 0px;
+    }
+    body {
+    padding-top: 0px;
+    }
+</style>
 {% endblock %}
 {% block search %}
 {% endblock %}
@@ -27,29 +41,40 @@
 {% endblock %}
 <script>
 function hide (elements) {
-  elements = elements.length ? elements : [elements];
   try {
-      for (var index = 0; index < elements.length; index++) {
-        elements[index].style.display = 'none';
-      }
+      elements = elements.length ? elements : [elements];
+          for (var index = 0; index < elements.length; index++) {
+            elements[index].style.display = 'none';
+          }
   }
   catch {}
 }
-hide(document.getElementsByClassName('mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4'));
-hide(document.getElementsByClassName('grid s-btn-group js-filter-btn'));
-hide(document.getElementsByClassName('js-show-link comments-link'));
-hide(document.getElementsByClassName('comment-user'));
-hide(document.getElementsByClassName('js-post-issue grid--cell s-btn s-btn__unset c-pointer py6 mx-auto'));
-hide(document.getElementsByClassName('js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track'));
-hide(document.getElementsByClassName('post-taglist grid gs4 gsy fd-column'));
-hide(document.getElementsByClassName('grid--cell fl1'));
-hide(document.getElementsByClassName('js-voting-container grid fd-column ai-stretch gs4 fc-black-200'));
-hide(document.getElementsByClassName('s-notice s-notice__info js-post-notice mb16'));
+<!--hide(document.getElementsByClassName('mt16 grid gs8 gsy fw-wrap jc-end ai-start pt4'));-->
+<!--hide(document.getElementsByClassName('grid s-btn-group js-filter-btn'));-->
+<!--hide(document.getElementsByClassName('js-show-link comments-link'));-->
+<!--hide(document.getElementsByClassName('comment-user'));-->
+<!--hide(document.getElementsByClassName('js-post-issue grid&#45;&#45;cell s-btn s-btn__unset c-pointer py6 mx-auto'));-->
+<!--hide(document.getElementsByClassName('js-bookmark-btn s-btn s-btn__unset c-pointer py4 js-gps-track'));-->
+<!--hide(document.getElementsByClassName('post-taglist grid gs4 gsy fd-column'));-->
+<!--hide(document.getElementsByClassName('grid&#45;&#45;cell fl1'));-->
+<!--hide(document.getElementsByClassName('js-voting-container grid fd-column ai-stretch gs4 fc-black-200'));-->
+<!--hide(document.getElementsByClassName('s-notice s-notice__info js-post-notice mb16'));-->
 
-hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.mb0"));
-hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout--right > div.post-taglist.grid.gs4.gsy.fd-column"));
-try {hide(document.querySelectorAll("a.js-add-link.comments-link.disabled-link"));} catch {hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));};
-try {hide(document.querySelectorAll("div > div.answercell.post-layout--right > div.grid.mb0.fw-wrap.ai-start.jc-end.gs8.gsy"));} catch {hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));};
+<!--hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout&#45;&#45;right > div.mb0"));-->
+<!--hide(document.querySelectorAll("#question > div.post-layout > div.postcell.post-layout&#45;&#45;right > div.post-taglist.grid.gs4.gsy.fd-column"));-->
+hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));
+<!--try {hide(document.querySelectorAll("div > div.answercell.post-layout&#45;&#45;right > div.grid.mb0.fw-wrap.ai-start.jc-end.gs8.gsy"));} catch {hide(document.getElementsByClassName('grid mb0 fw-wrap ai-start jc-end gs8 gsy'));};-->
+hide(document.getElementsByClassName('mb0'));
+hide(document.getElementsByClassName('js-add-link comments-link disabled-link'));
+hide(document.getElementsByClassName('grid s-btn-group js-filter-btn'));
+hide(document.getElementsByClassName('mln2 mr0 svg-icon iconHistory'));
+hide(document.getElementsByClassName('navbar-form w-100 pl-3 pr-2'));
+hide(document.getElementsByClassName('post-tag js-gps-track'));
+hide(document.getElementsByClassName('comment-user owner'));
+hide(document.getElementsByClassName('comment-user'));
+hide(document.getElementsByClassName('relativetime-clean'));
+
+
 
 </script>
 {% endblock %}
